@@ -1,3 +1,4 @@
+import { signIn } from "./auth/google";
 import logo from "./logo.svg";
 
 function App() {
@@ -27,20 +28,36 @@ function App() {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
               style={{ flexGrow: 0 }}
-            ></div>
+            >
+              <button className="btn btn-primary" onClick={signIn}>
+                Sign In With Google
+              </button>
+            </div>
           </div>
         </nav>
       </header>
       <div style={{ padding: "0 50px" }} className="container-fluid ">
         <div className="d-flex justify-content-start align-items-center">
-          <p style={{ width: "50%" }}>Original</p>
-          <select class="form-select mb-3" style={{ width: 200 }}>
-            <option value="1" selected>
-              English
-            </option>
-            <option value="2">Nepali</option>
-            <option value="3">Hindi</option>
-          </select>
+          <div style={{ width: "50%" }}>
+            <select class="form-select mb-3" style={{ width: 200 }}>
+              <option value="" selected>
+                Original
+              </option>
+              <option value="1">English</option>
+              <option value="2">Nepali</option>
+              <option value="3">Hindi</option>
+            </select>
+          </div>
+          <div style={{ width: "50%" }}>
+            <select class="form-select mb-3" style={{ width: 200 }}>
+              <option value="">Original</option>
+              <option value="1" selected>
+                English
+              </option>
+              <option value="2">Nepali</option>
+              <option value="3">Hindi</option>
+            </select>
+          </div>
         </div>
         <div className="d-flex justify-content-center align-items-center">
           <div style={{ width: "50%", height: "100vh" }}>
