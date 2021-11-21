@@ -34,7 +34,11 @@ const Header = () => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
               style={{ flexGrow: 0 }}
-            ></div>
+            >
+              <button className="btn btn-primary" onClick={signIn}>
+                Sign In With Google
+              </button>
+            </div>
           </div>
         </nav>
       </header>
