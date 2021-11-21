@@ -5,27 +5,32 @@ import { signIn } from "../auth/google";
 const Header = () => {
   return (
     <>
-      <header
-        className="App-header"
-        style={{ marginBottom: 50, color: "#030707" }}
-      >
+      <header className="App-header" style={{ marginBottom: 50 }}>
         <nav
-          style={{ background: "#9edbff" }}
+          style={{ background: "#4F5CD3" }}
           className="navbar navbar-expand-lg navbar-light "
         >
           <div className="container-fluid" style={{ padding: "0 50px" }}>
-            <Link className="navbar-brand" to="#">
+            <Link className="navbar-brand" to="#" style={{ color: "white" }}>
               clyric
             </Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <Link className="nav-link" to="/translations">
+                  <Link
+                    className="nav-link"
+                    to="/translations"
+                    style={{ color: "white" }}
+                  >
                     Translations
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/create-translation">
+                  <Link
+                    className="nav-link"
+                    to="/create-translation"
+                    style={{ color: "white" }}
+                  >
                     Create Translation
                   </Link>
                 </li>
@@ -46,11 +51,7 @@ const Header = () => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
               style={{ flexGrow: 0 }}
-            >
-              <button className="btn btn-primary" onClick={signIn}>
-                Sign In With Google
-              </button>
-            </div>
+            ></div>
           </div>
         </nav>
       </header>

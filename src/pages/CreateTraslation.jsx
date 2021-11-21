@@ -7,11 +7,15 @@ const CreateTranslation = () => {
   const renderCurrentStep = () => {
     if (state === 0) {
       return (
-        <div style={{ width: 600, paddingTop: 50 }}>
-          <h3>
+        <div style={{ paddingTop: 125 }}>
+          <h1>
+            Welcome to the <span style={{ fontStyle: "italic" }}>clyric</span>{" "}
+            community!
+          </h1>
+          <p style={{ color: "#a8aaad" }}>
             Please go through this form to translate a song's lyrics to a
             language of your choice.
-          </h3>
+          </p>
         </div>
       );
     } else if (state === 1) {
@@ -43,7 +47,42 @@ const CreateTranslation = () => {
         </>
       );
     } else if (state === 2) {
-      return <h2>Lyric/Translation</h2>;
+      return (
+        <>
+          <h2 class="mb-3">Lyric/Translation</h2>
+          <div class="mb-3">
+            <label for="translation" class="form-label">
+              Which language would you be translating to?
+            </label>
+            <select class="form-select mb-3">
+              <option value="" selected>
+                Original
+              </option>
+              <option value="1">English</option>
+              <option value="2">Nepali</option>
+              <option value="3">Hindi</option>
+            </select>
+          </div>
+          <div class="row mb-3 mt-3">
+            <div class="col-6">
+              <label for="lyrics" class="form-label">
+                Original Lyrics (Paste from Rap Genius)
+              </label>
+              <textarea class="form-control" id="lyrics" rows="5"></textarea>
+            </div>
+            <div class="col-6">
+              <label for="translation" class="form-label">
+                Translation
+              </label>
+              <textarea
+                class="form-control"
+                id="translation"
+                rows="5"
+              ></textarea>
+            </div>
+          </div>
+        </>
+      );
     } else {
       return <h2>Done</h2>;
     }
@@ -55,25 +94,67 @@ const CreateTranslation = () => {
       return `(Step ${state} of ${maxSteps})`;
   };
 
+  const renderButtonText = () => {
+    if (state === 0) return "Proceed";
+    else if (state > maxSteps) return "Finish";
+    else return "Next";
+  };
+
   return (
     <div className="row justify-content-between" style={{ overflow: "hidden" }}>
       <div className="col-6">
-        <h4 style={{ opacity: 0.3, marginBottom: 50 }}>
+        <h4
+          style={{
+            marginBottom: 50,
+            color: "#b0b0b2",
+            fontSize: 20,
+            fontWeight: 300,
+          }}
+        >
           Create a translation {renderLegend()}
         </h4>
-        <div style={{ minHeight: 250 }}>{renderCurrentStep()}</div>
+        <div style={{ minHeight: 320 }}>{renderCurrentStep()}</div>
         <div>
           <button
             style={{
-              background: "#9edbff",
-              borderColor: "#9edbff",
-              color: "#030707",
+              background: "rgb(79 92 211)",
+              borderColor: "rgb(79 92 211)",
+              color: "white",
+              marginRight: 20,
+              textTransform: "uppercase",
+              width: 120,
+              fontSize: 15,
+              letterSpacing: 1,
             }}
             className="btn btn-primary btn-lg"
-            onClick={() => setState(state + 1)}
+            onClick={() => {
+              if (state >= maxSteps + 1) return;
+              setState(state + 1);
+            }}
           >
-            Next
+            {renderButtonText()}
           </button>
+          {state === 0 ? (
+            ""
+          ) : (
+            <button
+              className="btn btn-dark btn-lg"
+              style={{
+                fontSize: 15,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                background: "rgb(176, 176, 178)",
+                borderColor: "rgb(176, 176, 178)",
+                width: 120,
+              }}
+              onClick={() => {
+                if (state <= 0) return;
+                setState(state - 1);
+              }}
+            >
+              Back
+            </button>
+          )}
         </div>
       </div>
       <div className="col-4 offset-1 mx-0 px-0 ">
