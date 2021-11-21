@@ -2,7 +2,7 @@ import React from "react";
 
 const Translation = () => {
   return (
-    <div style={{ padding: "0 50px" }} className="container-fluid ">
+    <>
       <div className="d-flex justify-content-start align-items-center">
         <p style={{ width: "50%" }}>Original</p>
         <select class="form-select mb-3" style={{ width: 200 }}>
@@ -96,7 +96,7 @@ const Translation = () => {
           <br />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
