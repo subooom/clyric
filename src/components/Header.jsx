@@ -5,21 +5,32 @@ import { signIn } from "../auth/google";
 const Header = () => {
   return (
     <>
-      <header className="App-header" style={{ marginBottom: 50 }}>
+      <header
+        className="App-header"
+        style={{ marginBottom: 50, color: "#030707" }}
+      >
         <nav
           style={{ background: "#9edbff" }}
           className="navbar navbar-expand-lg navbar-light "
         >
           <div className="container-fluid" style={{ padding: "0 50px" }}>
             <Link className="navbar-brand" to="#">
-              Lyric Translate
+              clyric
             </Link>
-            <Link className="navbar-brand" to="/">
-              Home
-            </Link>
-            <Link className="navbar-brand" to="/translation">
-              Translation
-            </Link>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <Link className="nav-link" to="/translations">
+                    Translations
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to="/create-translation">
+                    Create Translation
+                  </Link>
+                </li>
+              </ul>
+            </div>
             <button
               className="navbar-toggler"
               type="button"
