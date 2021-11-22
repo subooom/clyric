@@ -88,7 +88,17 @@ const CreateTranslation = () => {
         </>
       );
     } else {
-      return <h2>Done</h2>;
+      return (
+        <div style={{ paddingTop: 50 }}>
+          <h1 style={{ fontSize: 30, fontWeight: "bold" }}>Thank you!</h1>
+          <p style={{ color: "#a8aaad" }}>
+            Your request has been recorded.
+            <br />
+            Please <code style={{ color: "black" }}>click</code> on the finish
+            button to submit.
+          </p>
+        </div>
+      );
     }
   };
 
@@ -116,7 +126,8 @@ const CreateTranslation = () => {
             marginTop: 30,
           }}
         >
-          {state === 0 ? "" : "Create a translation"} {renderLegend()}
+          {state === 0 || state === maxSteps + 1 ? "" : "Create a translation"}{" "}
+          {renderLegend()}
         </h4>
         <div style={{ minHeight: 320 }}>{renderCurrentStep()}</div>
         <div>
