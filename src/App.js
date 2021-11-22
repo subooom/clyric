@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Translations from "./pages/Translations";
 import CreateTranslation from "./pages/CreateTraslation";
+import Translations from "./pages/Translations";
 
 function App() {
   useEffect(() => {
