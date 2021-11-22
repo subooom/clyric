@@ -7,7 +7,7 @@ const CreateTranslation = () => {
   const renderCurrentStep = () => {
     if (state === 0) {
       return (
-        <div style={{ paddingTop: 125 }}>
+        <div style={{ paddingTop: 50 }}>
           <h1 style={{ fontSize: 30, fontWeight: "bold" }}>
             Welcome to the <span style={{ fontStyle: "italic" }}>clyric</span>{" "}
             community!
@@ -88,7 +88,14 @@ const CreateTranslation = () => {
         </>
       );
     } else {
-      return <h2>Done</h2>;
+      return (
+        <>
+          <h2 style={{ fontSize: 25, fontWeight: "bold" }}>Thank you!</h2>
+          <p style={{ paddingTop: 20 }}>
+            Your request has been proceed successfully.
+          </p>
+        </>
+      );
     }
   };
 
@@ -113,7 +120,7 @@ const CreateTranslation = () => {
             color: "#b0b0b2",
             fontSize: 20,
             fontWeight: 300,
-            marginTop: 30,
+            marginTop: 50,
           }}
         >
           Create a translation {renderLegend()}
