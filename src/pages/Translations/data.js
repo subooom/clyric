@@ -5,6 +5,7 @@ const data = [
     songName: "Bad Guy",
     language: "English",
     lyric: `White shirt now red, my bloody nose Sleepin', you're on your tippy toes Creepin' around like no one knowsThink you're so criminal Bruises on both my knees for youDon't say thank you or pleaseI do what I want when I'm wanting to My soul? So cynical`,
+    translation: `White shirt now red, my bloody nose Sleepin', you're on your tippy toes Creepin' around like no one knowsThink you're so criminal Bruises on both my knees for youDon't say thank you or pleaseI do what I want when I'm wanting to My soul? So cynical`,
   },
 
   {
@@ -21,6 +22,7 @@ const data = [
     D'USSÉ with my boo bae tastes like Kool-Aid for the analysts
     Girl, I can buy your ass the world with my paystub
     Ooh, that pussy good, won't you sit it on my taste bloods?`,
+    translation: `White shirt now red, my bloody nose Sleepin', you're on your tippy toes Creepin' around like no one knowsThink you're so criminal Bruises on both my knees for youDon't say thank you or pleaseI do what I want when I'm wanting to My soul? So cynical`,
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const data = [
     songName: "Bad Guy",
     language: "English",
     lyric: `White shirt now red, my bloody nose Sleepin', you're on your tippy toes Creepin' around like no one knowsThink you're so criminal Bruises on both my knees for youDon't say thank you or pleaseI do what I want when I'm wanting to My soul? So cynical`,
+    translation: `White shirt now red, my bloody nose Sleepin', you're on your tippy toes Creepin' around like no one knowsThink you're so criminal Bruises on both my knees for youDon't say thank you or pleaseI do what I want when I'm wanting to My soul? So cynical`,
   },
 ];
 

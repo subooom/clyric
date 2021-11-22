@@ -3,13 +3,15 @@ import data from "./data";
 
 const Translations = () => {
   return (
-    <div className="row">
-      {data.map((item) => (
-        <div className="col-md-3">
-          <TranslationCard key={item.id} {...item} />
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="row">
+        {data.map((item) => (
+          <div className="col-md-4">
+            <TranslationCard key={item.id} {...item} />
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

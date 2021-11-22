@@ -1,8 +1,14 @@
 import React from "react";
 
-const TranslationCard = ({ artistName, songName, language, lyric }) => {
+const TranslationCard = ({
+  artistName,
+  songName,
+  language,
+  lyric,
+  translation,
+}) => {
   return (
-    <div className="card">
+    <div className="card" style={{ height: 500 }}>
       <div className="card-body">
         <p style={{ float: "right", fontSize: 12, color: "#6c757d" }}>
           {language}
@@ -13,6 +19,9 @@ const TranslationCard = ({ artistName, songName, language, lyric }) => {
         </h6>
         <p className="card-text" style={{ fontSize: 15, paddingTop: 20 }}>
           {lyric}
+        </p>
+        <p className="card-text" style={{ fontSize: 15 }}>
+          {translation}
         </p>
       </div>
     </div>
