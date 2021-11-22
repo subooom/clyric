@@ -8,7 +8,7 @@ const CreateTranslation = () => {
     if (state === 0) {
       return (
         <div style={{ paddingTop: 125 }}>
-          <h1>
+          <h1 style={{ fontSize: 30, fontWeight: "bold" }}>
             Welcome to the <span style={{ fontStyle: "italic" }}>clyric</span>{" "}
             community!
           </h1>
@@ -21,7 +21,9 @@ const CreateTranslation = () => {
     } else if (state === 1) {
       return (
         <>
-          <h2 className="mb-4">Basic Detail</h2>
+          <h2 className="mb-4" style={{ fontSize: 25, fontWeight: "bold" }}>
+            Basic Detail
+          </h2>
           <div class="mb-3">
             <label for="artist-name" class="form-label">
               Artist Name
@@ -49,7 +51,9 @@ const CreateTranslation = () => {
     } else if (state === 2) {
       return (
         <>
-          <h2 class="mb-3">Lyric/Translation</h2>
+          <h2 class="mb-3" style={{ fontSize: 25, fontWeight: "bold" }}>
+            Lyric/Translation
+          </h2>
           <div class="mb-3">
             <label for="translation" class="form-label">
               Which language would you be translating to?
@@ -65,7 +69,7 @@ const CreateTranslation = () => {
           </div>
           <div class="row mb-3 mt-3">
             <div class="col-6">
-              <label for="lyrics" class="form-label">
+              <label for="lyrics" class="form-label" style={{ fontSize: 15 }}>
                 Original Lyrics (Paste from Rap Genius)
               </label>
               <textarea class="form-control" id="lyrics" rows="5"></textarea>
@@ -105,10 +109,11 @@ const CreateTranslation = () => {
       <div className="col-6">
         <h4
           style={{
-            marginBottom: 50,
+            marginBottom: 30,
             color: "#b0b0b2",
             fontSize: 20,
             fontWeight: 300,
+            marginTop: 30,
           }}
         >
           Create a translation {renderLegend()}
