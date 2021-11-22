@@ -88,19 +88,12 @@ const CreateTranslation = () => {
         </>
       );
     } else {
-      return (
-        <>
-          <h2 style={{ fontSize: 25, fontWeight: "bold" }}>Thank you!</h2>
-          <p style={{ paddingTop: 20 }}>
-            Your request has been proceed successfully.
-          </p>
-        </>
-      );
+      return <h2>Done</h2>;
     }
   };
 
   const renderLegend = () => {
-    if (state === 0) return `(Total ${maxSteps} steps)`;
+    if (state === 0) return ``;
     if (state < maxSteps + 1 && state > 0)
       return `(Step ${state} of ${maxSteps})`;
   };
@@ -120,10 +113,10 @@ const CreateTranslation = () => {
             color: "#b0b0b2",
             fontSize: 20,
             fontWeight: 300,
-            marginTop: 50,
+            marginTop: 30,
           }}
         >
-          Create a translation {renderLegend()}
+          {state === 0 ? "" : "Create a translation"} {renderLegend()}
         </h4>
         <div style={{ minHeight: 320 }}>{renderCurrentStep()}</div>
         <div>
