@@ -1,8 +1,32 @@
 import { useEffect, useState } from "react";
+import Translation from "../models/translation";
+import { signIn } from "../auth/google";
+import { useNavigate } from "react-router-dom";
 
 const CreateTranslation = () => {
   const [state, setState] = useState(0);
   const maxSteps = 2;
+  let navigate = useNavigate();
+
+  const [formState, setFormState] = useState({
+    artist_name: "",
+    song_name: "",
+    language: "",
+    lyrics: "",
+    translation: "",
+  });
+
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
+
+  useEffect(() => {
+    signIn();
+  }, []);
+
+  const changeFormState = (key, value) => {
+    setFormState({ ...formState, [key]: value });
+  };
 
   const renderCurrentStep = () => {
     if (state === 0) {
@@ -33,6 +57,8 @@ const CreateTranslation = () => {
               class="form-control"
               id="artist-name"
               placeholder="Michael Jackson"
+              value={formState.artist_name}
+              onChange={(e) => changeFormState("artist_name", e.target.value)}
             />
           </div>
           <div class="mb-3">
@@ -44,6 +70,8 @@ const CreateTranslation = () => {
               class="form-control"
               id="song-name"
               placeholder="Thriller"
+              value={formState.song_name}
+              onChange={(e) => changeFormState("song_name", e.target.value)}
             />
           </div>
         </>
@@ -58,12 +86,15 @@ const CreateTranslation = () => {
             <label for="translation" class="form-label">
               Which language would you be translating to?
             </label>
-            <select class="form-select mb-3">
-              <option value="" selected>
-                Original
-              </option>
+            <select
+              class="form-select mb-3"
+              value={formState.language}
+              onChange={(e) => changeFormState("language", e.target.value)}
+            >
               <option value="1">English</option>
-              <option value="2">Nepali</option>
+              <option value="2" selected>
+                Nepali
+              </option>
               <option value="3">Hindi</option>
             </select>
           </div>
@@ -72,7 +103,14 @@ const CreateTranslation = () => {
               <label for="lyrics" class="form-label" style={{ fontSize: 15 }}>
                 Original Lyrics (Paste from Rap Genius)
               </label>
-              <textarea class="form-control" id="lyrics" rows="5"></textarea>
+              <textarea
+                class="form-control"
+                id="lyrics"
+                rows="5"
+                onChange={(e) => changeFormState("lyrics", e.target.value)}
+              >
+                {formState.lyrics}
+              </textarea>
             </div>
             <div class="col-6">
               <label for="translation" class="form-label">
@@ -82,7 +120,10 @@ const CreateTranslation = () => {
                 class="form-control"
                 id="translation"
                 rows="5"
-              ></textarea>
+                onChange={(e) => changeFormState("translation", e.target.value)}
+              >
+                {formState.translation}
+              </textarea>
             </div>
           </div>
         </>
@@ -114,8 +155,51 @@ const CreateTranslation = () => {
     else return "Next";
   };
 
+  const handleSubmit = async () => {
+    // create new translation in firebase
+    setLoading(true);
+    const { artist_name, song_name, language, lyrics, translation } = formState;
+    const t = await new Translation(
+      artist_name,
+      song_name,
+      language,
+      lyrics,
+      translation
+    );
+    t.getStatus().then((st) => {
+      setLoading(false);
+      if (st.status === "success") {
+        setSuccess(true);
+        navigate("my-translations");
+      } else {
+        setSuccess(false);
+        setError(st.error);
+      }
+    });
+  };
+
   return (
-    <div className="row justify-content-between" style={{ overflow: "hidden" }}>
+    <div
+      className="row justify-content-between"
+      style={{ overflow: "hidden", position: "relative" }}
+    >
+      {loading ? (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 1,
+            background: "white",
+            opacity: 0.3,
+          }}
+        ></div>
+      ) : (
+        ""
+      )}
+      {error.name ? <div>An Error Occured! Please try again later</div> : ""}
       <div className="col-6">
         <h4
           style={{
@@ -129,7 +213,7 @@ const CreateTranslation = () => {
           {state === 0 || state === maxSteps + 1 ? "" : "Create a translation"}{" "}
           {renderLegend()}
         </h4>
-        <div style={{ minHeight: 320 }}>{renderCurrentStep()}</div>
+        <div style={{ minHeight: 330 }}>{renderCurrentStep()}</div>
         <div>
           <button
             style={{
@@ -144,7 +228,12 @@ const CreateTranslation = () => {
             }}
             className="btn btn-primary btn-lg"
             onClick={() => {
-              if (state >= maxSteps + 1) return;
+              if (state > maxSteps + 1) return;
+              console.log(state);
+              if (state === maxSteps + 1) {
+                handleSubmit();
+                return;
+              }
               setState(state + 1);
             }}
           >
